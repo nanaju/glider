@@ -28,6 +28,10 @@ class ViewController: UIViewController , CLLocationManagerDelegate {
         lm = CLLocationManager()
         // CLLocationManagerをDelegateに指定
         lm.delegate = self
+        // GPSの使用を開始する
+        lm.startUpdatingLocation()
+        print("GPS使用開始")
+
 
         // セキュリティ認証のステータスを取得.
         let status = CLLocationManager.authorizationStatus()
@@ -46,13 +50,13 @@ class ViewController: UIViewController , CLLocationManagerDelegate {
         // 位置情報の精度を指定．任意，
          lm.desiredAccuracy = kCLLocationAccuracyBest
         // 位置情報取得間隔を指定．指定した値（メートル）移動したら位置情報を更新する．任意．
-         lm.distanceFilter = 20
+         //lm.distanceFilter = 20
         
         // GPSの使用を開始する
-        lm.startUpdatingLocation()
-        print("GPS使用開始")
-        self.lm.requestAlwaysAuthorization()
-        print("もう一回")
+        //lm.startUpdatingLocation()
+        //print("GPS使用開始")
+        //self.lm.requestAlwaysAuthorization()
+        //print("もう一回")
     }
 
     override func didReceiveMemoryWarning() {
