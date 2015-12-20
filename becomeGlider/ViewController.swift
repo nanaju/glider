@@ -34,9 +34,10 @@ class ViewController: UIViewController , CLLocationManagerDelegate {
         
         // まだ認証が得られていない場合は、認証ダイアログを表示.
         if(status == CLAuthorizationStatus.NotDetermined) {
-            print("didChangeAuthorizationStatus:\(status)");
+            print("ステータスが変更されました:\(status)");
             // まだ承認が得られていない場合は、認証ダイアログを表示.
-            lm.requestAlwaysAuthorization()
+            self.lm.requestAlwaysAuthorization()
+            print("ステータス変更完了")
         }
         
         
@@ -45,16 +46,34 @@ class ViewController: UIViewController , CLLocationManagerDelegate {
         // 位置情報の精度を指定．任意，
          lm.desiredAccuracy = kCLLocationAccuracyBest
         // 位置情報取得間隔を指定．指定した値（メートル）移動したら位置情報を更新する．任意．
-         lm.distanceFilter = 50
+         lm.distanceFilter = 20
         
         // GPSの使用を開始する
         lm.startUpdatingLocation()
+        print("GPS使用開始")
+        self.lm.requestAlwaysAuthorization()
+        print("もう一回")
     }
 
     override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // 現状のステータス状態を表示します
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        print("didChangeAuthorizationStatus");
+        var statusStr = "";
+        switch (status) {
+        case .NotDetermined:        statusStr = "NotDetermined"
+        case .Restricted:           statusStr = "Restricted"
+        case .Denied:               statusStr = "Denied"
+        case .Authorized:           statusStr = "Authorized"
+        case .AuthorizedWhenInUse:  statusStr = "AuthorizedWhenInUse"
+        }
+        print(" CLAuthorizationStatus: \(statusStr)")
+    }
+    
     
     /* 位置情報取得成功時に実行される関数 */
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation){
@@ -63,7 +82,7 @@ class ViewController: UIViewController , CLLocationManagerDelegate {
         // 取得した経度がnewLocation.coordinate.longitudeに格納されている
         longitude = newLocation.coordinate.longitude
         // 取得した緯度・経度をLogに表示
-        print("slatiitude: \(latitude) , longitude: \(longitude)")
+        print("latiitude: \(latitude) , longitude: \(longitude)")
         
         // GPSの使用を停止する．停止しない限りGPSは実行され，指定間隔で更新され続ける．
         // lm.stopUpdatingLocation()
