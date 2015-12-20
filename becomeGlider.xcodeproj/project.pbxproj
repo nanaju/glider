@@ -197,6 +197,11 @@
 					35F572181C22A78F00761229 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = WQCR8PB3UZ;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 					35F5722F1C22A79100761229 = {
 						CreatedOnToolsVersion = 7.2;
@@ -495,6 +500,7 @@
 				35F572461C22A79100761229 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		35F572471C22A79100761229 /* Build configuration list for PBXNativeTarget "becomeGliderTests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +509,7 @@
 				35F572491C22A79100761229 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		35F5724A1C22A79100761229 /* Build configuration list for PBXNativeTarget "becomeGliderUITests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +518,7 @@
 				35F5724C1C22A79100761229 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
