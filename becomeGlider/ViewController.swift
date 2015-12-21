@@ -22,8 +22,14 @@ class ViewController: UIViewController , CLLocationManagerDelegate {
     
     @IBOutlet weak var gpsLabel: UILabel!
     @IBOutlet var gpsButton: UIButton!
-    @IBAction func gpsButtonTest(sender: AnyObject) {
+    @IBAction func gpsGet(sender : AnyObject){
+        gpsLabel.text = "latiitude: \(latitude) , longitude: \(longitude)"
+        
+        
     }
+    
+    
+    
     override func viewDidLoad() {
     super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -92,7 +98,10 @@ class ViewController: UIViewController , CLLocationManagerDelegate {
         longitude = newLocation.coordinate.longitude
         // 取得した緯度・経度をLogに表示
         print("latiitude: \(latitude) , longitude: \(longitude)")
-        gpsLabel.text = "latiitude: \(latitude) , longitude: \(longitude)"
+        
+        
+        //メソッドとの関連付け
+        gpsButton.addTarget(self, action: "tapped", forControlEvents: .TouchUpInside)
         
         
         // GPSの使用を停止する．停止しない限りGPSは実行され，指定間隔で更新され続ける．
