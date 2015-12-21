@@ -20,7 +20,10 @@ class ViewController: UIViewController , CLLocationManagerDelegate {
     //経度の保持
     var longitude : CLLocationDegrees!
     
-    
+    @IBOutlet weak var gpsLabel: UILabel!
+    @IBOutlet var gpsButton: UIButton!
+    @IBAction func gpsButtonTest(sender: AnyObject) {
+    }
     override func viewDidLoad() {
     super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -31,6 +34,8 @@ class ViewController: UIViewController , CLLocationManagerDelegate {
         // GPSの使用を開始する
         lm.startUpdatingLocation()
         print("GPS使用開始")
+        
+        
 
 
         // セキュリティ認証のステータスを取得.
@@ -87,6 +92,8 @@ class ViewController: UIViewController , CLLocationManagerDelegate {
         longitude = newLocation.coordinate.longitude
         // 取得した緯度・経度をLogに表示
         print("latiitude: \(latitude) , longitude: \(longitude)")
+        gpsLabel.text = "latiitude: \(latitude) , longitude: \(longitude)"
+        
         
         // GPSの使用を停止する．停止しない限りGPSは実行され，指定間隔で更新され続ける．
         // lm.stopUpdatingLocation()
@@ -97,6 +104,7 @@ class ViewController: UIViewController , CLLocationManagerDelegate {
         print("Error")
         
     }
+    
 
 
 }
